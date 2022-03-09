@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    class Rectangle{
+        chieuDai;
+        chieuRong;
+        constructor(a,b) {
+            this.chieuDai = a;
+            this.chieuRong=b
+        }
+        dienTich(){
+            document.write(this.chieuDai*this.chieuRong)
+        }
+        chuVi(){
+            document.write( (this.chieuDai+this.chieuRong)*2)
+        }
+    }
+    hcn= new Rectangle(4,3)
+    // hcn.chuVi();
+    // hcn.dienTich();
+</script>
+</body>
+</html>
