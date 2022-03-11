@@ -5,24 +5,96 @@
     <title>Title</title>
 </head>
 <body>
+<table border="1px" width="100%">
+    <tr>
+        <td>Nhap chieu rong</td>
+        <td><input type="number" id="width"></td>
+    </tr>
+    <tr>
+        <td>Nhap chieu dai</td>
+        <td><input type="number" id="height"></td>
+    </tr>
+    <tr>
+        <td>Dien tich</td>
+        <td><h1 id="arena"></h1></td>
+    </tr>
+    <tr>
+        <td>Chu vi</td>
+        <td><h1 id="perimeter"></h1></td>
+    </tr>
+    <tr>
+        <td>
+            <button onclick="showResult()">Hien thi KQ</button>
+        </td>
+        <td>
+            <button onclick="reset()">Reset</button>
+        </td>
+        <
+    </tr>
+    <tr>
+        <td colspan="2">
+            <canvas id="myCanvas" width="1200px" height="500px" style="border: 1px solid red"></canvas>
+        </td>
+    </tr>
+</table>
 <script>
-    class Rectangle{
-        chieuDai;
-        chieuRong;
-        constructor(a,b) {
-            this.chieuDai = a;
-            this.chieuRong=b
+    class Rectangle {
+        constructor(width, height) {
+            this.width = width;
+            this.height = height;
         }
-        dienTich(){
-            document.write(this.chieuDai*this.chieuRong)
+
+        getWidth() {
+            return this.width
         }
-        chuVi(){
-            document.write( (this.chieuDai+this.chieuRong)*2)
+
+        setWidth(width) {
+            this.width = width
+        }
+
+        getHeight() {
+            return this.height
+        }
+
+        setHeight(height) {
+            this.height = height
+        }
+
+        getArena() {
+            return this.width * this.height
+        }
+
+        getPremeter() {
+            return 2 * this.width + 2 * this.height
         }
     }
-    hcn= new Rectangle(4,3)
-    // hcn.chuVi();
-    // hcn.dienTich();
+
+    let canvas = document.getElementById('myCanvas');
+    let ctx = canvas.getContext('2d');
+
+    function showResult() {
+        let width = document.getElementById('width').value;
+        let height = document.getElementById('height').value;
+        let rectangle1 = new Rectangle(width, height);
+
+        ctx.beginPath();
+        ctx.fillStyle = 'red';
+        ctx.fillRect(100, 100, width, height);
+        ctx.stroke();
+        let area = rectangle1.getArena()
+        document.getElementById('arena').innerHTML = area;
+        let premeter = rectangle1.getPremeter();
+        document.getElementById('perimeter').innerHTML = premeter
+    }
+
+    function reset() {
+        document.getElementById('arena').innerHTML = ' '
+        document.getElementById('perimeter').innerHTML = ' '
+        document.getElementById('width').value = ' '
+        document.getElementById('height').value = ' '
+        ctx.clearRect(0, 0, canvas.width, canvas.height)
+
+    }
 </script>
 </body>
 </html>
